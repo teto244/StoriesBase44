@@ -1,0 +1,14 @@
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Archive Project
+        run: zip -r StoriesProject.zip . -x "*.git*"
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: StoriesApp-Package
+          path: StoriesProject.zip
