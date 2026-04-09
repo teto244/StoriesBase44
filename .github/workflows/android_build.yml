@@ -1,33 +1,16 @@
-name: Build Android APK
-
-on:
-  push:
-    branches: [ main ]
-
+name: Build Stories App
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: set up JDK 11
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-          
-      - name: Build APK
+      - name: Create App Package
         run: |
-          # هذه الخطوة ستقوم ببناء الـ APK الأساسي
-          # ملاحظة: سنستخدم مكتبة بسيطة للتحويل بما أن مشروعك يعتمد على الـ JSON حالياً
-          echo "Building your Stories App..."
-          mkdir -p build
-          cp -r src build/
-          # محاكاة بناء ملف APK (في المشاريع المتقدمة نستخدم Gradle)
-          zip -r StoriesApp.apk build/
-          
-      - name: Upload APK
+          mkdir -p output
+          zip -r output/StoriesApp_v1.zip src/ README.md
+      - name: Upload Result
         uses: actions/upload-artifact@v3
         with:
-          name: StoriesApp
-          path: StoriesApp.apk
+          name: StoriesApp-Files
+          path: output/StoriesApp_v1.zip
