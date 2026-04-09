@@ -1,16 +1,15 @@
-name: Build Stories App
+name: Build
 on: [push]
 jobs:
-  build:
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Create Package
-        run: |
-          mkdir -p output
-          zip -r output/Stories_Project.zip . -x "*.git*"
-      - name: Upload Result
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Zip Files
+        run: zip -r Project.zip .
+      - name: Upload
         uses: actions/upload-artifact@v3
         with:
-          name: StoriesApp-Package
-          path: output/Stories_Project.zip
+          name: StoriesApp-Files
+          path: Project.zip
