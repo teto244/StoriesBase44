@@ -5,14 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
       - name: Create Package
         run: |
           mkdir -p output
-          # تجميع كل ملفات البرمجة والبيانات في ملف واحد
-          zip -r output/Stories_Project.zip src/ README.md
-          
-      - name: Upload Artifact
+          zip -r output/Stories_Project.zip . -x "*.git*"
+      - name: Upload Result
         uses: actions/upload-artifact@v3
         with:
           name: StoriesApp-Package
