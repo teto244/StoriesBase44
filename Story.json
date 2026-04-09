@@ -1,0 +1,27 @@
+{
+  "name": "Story",
+  "fields": [
+    {
+      "id": "title",
+      "name": "عنوان القصة",
+      "type": "string",
+      "required": true
+    },
+    {
+      "id": "category",
+      "name": "التصنيف",
+      "type": "select",
+      "options": ["رعب", "دراما", "خيال علمي", "تاريخي"]
+    },
+    {
+      "id": "cover_image",
+      "name": "غلاف القصة",
+      "type": "image"
+    },
+    {
+      "id": "content",
+      "name": "نص القصة",
+      "type": "text_area"
+    }
+  ]
+}
